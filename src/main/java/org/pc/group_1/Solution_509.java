@@ -18,7 +18,7 @@ public class Solution_509 {
 
     public static long factorial(int n) {
 
-          return Stream.iterate(new Long[]{Long.valueOf(1), Long.valueOf(2)}, t -> new Long[]{(t[0] + t[1]) % 1000000007,
+          return Stream.iterate(new Long[]{Long.valueOf(0), Long.valueOf(1)}, t -> new Long[]{(t[0] + t[1]) % 1000000007,
                   (t[0] + t[1] + t[1]) % 1000000007}) // 1
                 .flatMap(Arrays::stream)
 //                .map(e -> e % 1000000007)
@@ -29,8 +29,8 @@ public class Solution_509 {
     }
 
     public static void main(String[] args) {
-        for(int i=1 ;i <= 10 ;i++){
-            System.out.println(i+ " : " + factorial(i-1));
+        for(int i=0 ;i <= 10 ;i++){
+            System.out.println(i+ " : " + factorial(i));
         }
 
     }
