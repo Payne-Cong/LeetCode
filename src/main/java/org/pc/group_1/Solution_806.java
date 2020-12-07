@@ -30,6 +30,36 @@ public class Solution_806 {
         return  res;
     }
 
+    public int matrixScores(int[][] A) {
+        int m = A.length;
+        int n = A[0].length;
+        // 行转 保证第一列 都为 1
+        for (int i = 0; i < m; i++) {
+            if(A[i][0]==0){
+                for (int j = 0; j < n; j++) {
+                    A[i][j] = 1 - A[i][j];
+                }
+            }
+        }
+        int res = 0;
+        // 列转 寻求最多 1 的个数
+        for (int i = 1; i < n; i++) { //列
+            int nOnes = 0 , nZeros = 0;
+            for (int j = 0; j < m ; j++) { // 行
+                int k = A[j][i]==1 ? nOnes++ : nZeros++;
+            }
+            int k = Math.max(nOnes,nZeros);
+
+            res += k * ( 1 << (n-1-i) );
+
+        }
+
+
+        res += m* (1 << (n-1));
+
+        return res;
+    }
+
     public static void main(String[] args) {
 
     }
